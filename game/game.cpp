@@ -26,12 +26,23 @@ void Game::startInternalGameThread()
 
 void Game::update()
 {
-    cout << "game update" << endl;
+    // cout << "game update" << endl;
 }
 
 void Game::paint()
 {
-    cout << "game paint" << endl;
+    // cout << "game paint" << endl;
+    int h = 0;
+    while(h < MAX_HEIGHT) {
+        int w = 0;
+        while(w < MAX_WIDTH) {
+            cout << "*";
+            w = w + 1;
+        }
+        cout << endl;
+        h = h + 1;
+    }
+    cout << "tick" << endl;
 }
 
 void Game::start()
