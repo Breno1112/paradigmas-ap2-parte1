@@ -3,16 +3,16 @@
 
 using namespace std;
 
-Scene* SceneManager::getScene(int id)
+std::shared_ptr<Scene> SceneManager::getScene(int id)
 {
-    Scene s;
-    Scene* pointer;
     if(id == 0) {
-        s = Scene();
+        Scene s = Scene();
+        runningScene = make_shared<Scene>(s);
     } else {
         cout << "retornando main scene";
-        s = MainMenuScene();
+        MainMenuScene s = MainMenuScene();
+        s.finished = false;
+        runningScene = make_shared<MainMenuScene>(s);
     }
-    pointer = &s;
-    return pointer;
+    return runningScene;
 }

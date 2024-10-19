@@ -58,7 +58,7 @@ Game::Game()
     scene = sceneManager.getScene(1);
 }
 
-void Game::loadScene(Scene* newScene)
+void Game::loadScene(std::shared_ptr<Scene> newScene)
 {
     scene = sceneManager.getScene(1);
 }
