@@ -36,13 +36,13 @@ void Game::paint()
     while(h < MAX_HEIGHT) {
         int w = 0;
         while(w < MAX_WIDTH) {
-            cout << "*";
+            cout << ".";
             w = w + 1;
         }
         cout << endl;
         h = h + 1;
     }
-    cout << "tick" << endl;
+    cout << "\x1B[5;47;31mTick\033[0m\t\t" << endl;
 }
 
 void Game::start()
