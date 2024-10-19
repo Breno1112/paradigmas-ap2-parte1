@@ -51,7 +51,7 @@ void Game::stop()
 
 Game::Game()
 {
-    scene = Scene();
+    scene = MainMenuScene();
 }
 
 void Game::loadScene(Scene newScene)
