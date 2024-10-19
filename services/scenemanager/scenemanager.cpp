@@ -9,7 +9,6 @@ std::shared_ptr<Scene> SceneManager::getScene(int id)
         Scene s = Scene();
         runningScene = make_shared<Scene>(s);
     } else {
-        cout << "retornando main scene";
         MainMenuScene s = MainMenuScene();
         s.finished = false;
         runningScene = make_shared<MainMenuScene>(s);
