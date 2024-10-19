@@ -26,16 +26,17 @@ void Game::startInternalGameThread()
 void Game::update()
 {
     cout << "update da cena" << endl;
-    scene.update();
-    if(scene.finished) {
-        loadScene(sceneManager.getScene(scene.nextScene));
+    scene->update();
+    if(scene->finished) {
+        loadScene(sceneManager.getScene(scene->nextScene));
     }
 }
 
 void Game::paint()
 {
     cout << "paint da cena" << endl;
-    scene.paint();
+    scene->paint();
+    // scene.paint();
 }
 
 void Game::start()
@@ -54,10 +55,10 @@ void Game::stop()
 
 Game::Game()
 {
-    scene = MainMenuScene();
+    scene = sceneManager.getScene(1);
 }
 
-void Game::loadScene(Scene newScene)
+void Game::loadScene(Scene* newScene)
 {
-    scene = newScene;
+    scene = sceneManager.getScene(1);
 }

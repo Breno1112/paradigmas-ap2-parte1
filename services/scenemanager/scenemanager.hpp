@@ -10,5 +10,5 @@ class SceneManager {
     public:
         SceneManager() {};
 
-    Scene getScene(int id);
+    Scene* getScene(int id);
 };

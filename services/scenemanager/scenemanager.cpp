@@ -3,12 +3,16 @@
 
 using namespace std;
 
-Scene SceneManager::getScene(int id)
+Scene* SceneManager::getScene(int id)
 {
+    Scene s;
+    Scene* pointer;
     if(id == 0) {
-        return Scene();
+        s = Scene();
     } else {
-        cout << "retornando cena main menu";
-        return MainMenuScene();
+        cout << "retornando main scene";
+        s = MainMenuScene();
     }
+    pointer = &s;
+    return pointer;
 }

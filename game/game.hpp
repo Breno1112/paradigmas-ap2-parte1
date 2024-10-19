@@ -5,7 +5,7 @@ class Game {
     
     private:
         SceneManager sceneManager;
-        Scene scene;
+        Scene* scene;
         int MAX_FPS = 30;
         int MAX_WIDTH = 50;
         int MAX_HEIGHT = 20;
@@ -14,7 +14,7 @@ class Game {
 
         void startInternalGameThread();
 
-        void loadScene(Scene newScene);
+        void loadScene(Scene* newScene);
 
 
     public:
