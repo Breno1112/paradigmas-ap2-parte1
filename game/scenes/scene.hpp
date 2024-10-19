@@ -11,11 +11,11 @@ class Scene {
 
         bool finished = false;
 
-        void onKeyPress();
+        virtual void onKeyPress();
 
-        void paint();
+        virtual void paint();
 
-        void update();
+        virtual void update();
 
         Scene() {};
 };

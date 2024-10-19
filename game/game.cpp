@@ -25,6 +25,7 @@ void Game::startInternalGameThread()
 
 void Game::update()
 {
+    cout << "update da cena" << endl;
     scene.update();
     if(scene.finished) {
         loadScene(sceneManager.getScene(scene.nextScene));
@@ -33,6 +34,7 @@ void Game::update()
 
 void Game::paint()
 {
+    cout << "paint da cena" << endl;
     scene.paint();
 }
 
@@ -40,6 +42,7 @@ void Game::start()
 {
     cout << "iniciando jogo" << endl;
     gameRunning = true;
+    loadScene(sceneManager.getScene(1));
     startInternalGameThread();
 }
 

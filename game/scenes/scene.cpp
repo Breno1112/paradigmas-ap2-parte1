@@ -15,7 +15,6 @@ void Scene::onKeyPress()
 
 void Scene::paint()
 {
-    cout << "teste de cena";
 }
 
 void Scene::update()

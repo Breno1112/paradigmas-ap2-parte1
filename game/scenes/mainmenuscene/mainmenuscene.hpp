@@ -8,5 +8,9 @@ class MainMenuScene: public Scene {
     public:
         MainMenuScene() {};
 
-        void update();
+        void update() override;
+
+        void paint() override;
+
+        void onKeyPress() override;
 };
