@@ -1,9 +1,10 @@
-#include "./scenes/scene.hpp"
+#include "../services/scenemanager/scenemanager.hpp"
 
 class Game {
 
     
     private:
+        SceneManager sceneManager;
         Scene scene;
         int MAX_FPS = 30;
         int MAX_WIDTH = 50;

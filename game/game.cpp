@@ -26,6 +26,9 @@ void Game::startInternalGameThread()
 void Game::update()
 {
     scene.update();
+    if(scene.finished) {
+        loadScene(sceneManager.getScene(scene.nextScene));
+    }
 }
 
 void Game::paint()
