@@ -15,8 +15,6 @@ void Game::startInternalGameThread()
         );
         auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(now - lastTime).count();
         if(delta >= (1000 / MAX_FPS)) {
-            // cout << "game clock tick" << endl;
-            // cout << "now is " << now.count() << " and last time was " << lastTime.count() << endl;
             update();
             paint();
             lastTime = now;
@@ -26,12 +24,11 @@ void Game::startInternalGameThread()
 
 void Game::update()
 {
-    // cout << "game update" << endl;
+    
 }
 
 void Game::paint()
 {
-    // cout << "game paint" << endl;
     int h = 0;
     while(h < MAX_HEIGHT) {
         int w = 0;
