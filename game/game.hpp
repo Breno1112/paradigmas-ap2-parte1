@@ -1,7 +1,10 @@
+#include "./scenes/scene.hpp"
+
 class Game {
 
     
     private:
+        Scene scene;
         int MAX_FPS = 30;
         int MAX_WIDTH = 50;
         int MAX_HEIGHT = 20;
@@ -9,6 +12,8 @@ class Game {
         bool gameRunning = false;
 
         void startInternalGameThread();
+
+        void loadScene(Scene newScene);
 
 
     public:
@@ -20,5 +25,5 @@ class Game {
 
         void stop();
 
-        Game() {}
+        Game();
 };
