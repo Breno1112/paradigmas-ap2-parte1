@@ -31,6 +31,13 @@ void MainMenuScene::paint()
         enemies[count]->paint();
         count = count + 1;
     }
+
+    count = 0;
+
+    while(count < screenBuffer.size()) {
+        cout << screenBuffer[count] << endl;
+        count = count + 1;
+    }
 }
 
 void MainMenuScene::onKeyPress()
