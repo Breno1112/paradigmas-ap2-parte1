@@ -10,4 +10,6 @@ class Player: public Entity {
 
     public:
         Player(int newId);
+
+        void handleKeyPress(std::vector<int>* keysPressed) override;
 };

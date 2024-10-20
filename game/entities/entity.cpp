@@ -40,6 +40,11 @@ int Entity::getVelY()
     return velY;
 }
 
+void Entity::handleKeyPress(std::vector<int> *keysPressed)
+{
+    
+}
+
 Entity::Entity(int newId)
 {
     id = newId;

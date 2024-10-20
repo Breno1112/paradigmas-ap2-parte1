@@ -1,3 +1,5 @@
+#include <vector>
+
 class Entity {
 
 
@@ -23,6 +25,8 @@ class Entity {
         int getVelX();
 
         int getVelY();
+
+        virtual void handleKeyPress(std::vector<int>* keysPressed);
 
         Entity(int id);
 };

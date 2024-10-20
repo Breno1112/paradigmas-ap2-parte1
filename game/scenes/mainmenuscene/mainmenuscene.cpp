@@ -25,5 +25,9 @@ void MainMenuScene::onKeyPress()
         keyboardService.RIGHT_ARROW_KEY, 
         keyboardService.SPACE_KEY,
         });
-    cout << "Apertando " << keysPressed.size() << " teclas neste momento" << endl;
+    // cout << "Apertando " << keysPressed.size() << " teclas neste momento" << endl;
+
+    if(player.has_value()) {
+        player.value().handleKeyPress(&keysPressed);
+    }
 }
