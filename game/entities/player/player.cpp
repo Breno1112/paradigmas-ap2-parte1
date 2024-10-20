@@ -6,6 +6,10 @@ using namespace std;
 Player::Player(int newId): Entity(newId)
 {
     id = newId;
+    x = 0;
+    y = 0;
+    velX = 0;
+    velY = 0;
 }
 
 void Player::handleKeyPress(std::vector<int> *keysPressed)
@@ -43,18 +47,28 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
     }
 
     if(willGoUp) {
-        setVelY(-1);
+        velY = -1;
     } else if(willGoDown) {
-        setVelY(1);
-    } else if(willGoLeft) {
-        setVelX(-1);
+        velY = 1;
+    } else {
+        velY = 0;
+    }
+    
+    if(willGoLeft) {
+        velX = -1;
     } else if(willGoRight) {
-        setVelX(1);
+        velX = 1;
+    } else {
+        velX = 0;
     }
 }
 
 void Player::update()
 {
+    x = x + velX;
+    y = y + velY;
+
+    cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
 }
 
 void Player::paint()

@@ -2,11 +2,8 @@
 
 class Entity {
 
-
-    private:
-        int x, y, velX, velY = 0;
-
     public:
+        int x, y, velX, velY = 0;
 
         int id;
         
