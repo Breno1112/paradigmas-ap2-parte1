@@ -15,6 +15,13 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
     bool willGoLeft = false;
     bool willGoRight = false;
     bool willFire = false;
+
+    int count = 0;
+
+    while(count < keysPressed->size()) {
+        
+        count = count + 1;
+    }
 }
 
 void Player::update()

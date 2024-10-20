@@ -3,6 +3,11 @@
 #include "../scene.hpp"
 #endif
 
+#ifndef KEYBOARD_CONTANTS_H
+#define KEYBOARD_CONTANTS_H
+#include "../../helpers/keyboardconstants.hpp"
+#endif
+
 #include <string>
 
 class MainMenuScene: public Scene {
