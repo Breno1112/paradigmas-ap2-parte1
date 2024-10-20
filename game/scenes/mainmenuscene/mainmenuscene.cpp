@@ -3,7 +3,13 @@
 
 using namespace std;
 
-void MainMenuScene::update() {
+MainMenuScene::MainMenuScene()
+{
+    player = make_optional<Player>(Player(1));
+}
+
+void MainMenuScene::update()
+{
     onKeyPress();
 }
 
