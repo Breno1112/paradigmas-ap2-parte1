@@ -13,4 +13,5 @@ class MainMenuScene: public Scene {
         void paint() override;
 
         void onKeyPress() override;
+        
 };

@@ -2,6 +2,13 @@
 
 #include "../../services/keyboardservice/keyboardservice.hpp"
 
+#include <string>
+
+#ifndef ENTIY_H
+#define ENTIY_H
+#include "../entities/entity.hpp"
+#endif
+
 class Scene {
 
     private:
@@ -10,6 +17,10 @@ class Scene {
     public:
 
         KeyboardService keyboardService;
+
+        std::vector<std::string> screenBuffer = {};
+
+        std::vector<Entity> entities = {};
 
         int nextScene = 0;
 
