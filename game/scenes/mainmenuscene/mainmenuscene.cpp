@@ -14,4 +14,5 @@ void MainMenuScene::paint()
 
 void MainMenuScene::onKeyPress()
 {
+    keyboardService.getKeysPressed({});
 }

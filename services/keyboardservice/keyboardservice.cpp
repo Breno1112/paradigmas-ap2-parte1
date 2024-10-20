@@ -1,5 +1,4 @@
 #include "keyboardservice.hpp"
-#include <Winuser.h>
 #include <vector>
 
 std::vector<int> KeyboardService::getKeysPressed(std::vector<int> keysToCheck)
