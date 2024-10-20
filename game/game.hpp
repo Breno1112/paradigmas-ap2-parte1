@@ -6,7 +6,7 @@ class Game {
     private:
         SceneManager sceneManager;
         std::shared_ptr<Scene> scene;
-        int MAX_FPS = 30;
+        int MAX_FPS = 5;
         int MAX_WIDTH = 50;
         int MAX_HEIGHT = 20;
 
