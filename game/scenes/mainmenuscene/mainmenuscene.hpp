@@ -5,6 +5,9 @@
 
 class MainMenuScene: public Scene {
 
+    private:
+        char screenBuffer[20][50] = {};
+
     public:
         MainMenuScene();
 

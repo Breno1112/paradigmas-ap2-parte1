@@ -1,8 +1,6 @@
 #include <functional>
 
 #include "../../services/keyboardservice/keyboardservice.hpp"
-
-#include <string>
 #include <optional>
 
 #ifndef ENTIY_H
@@ -24,8 +22,6 @@ class Scene {
     public:
 
         KeyboardService keyboardService;
-
-        std::vector<std::string> screenBuffer = {};
 
         std::vector<Entity*> enemies = {};
 
