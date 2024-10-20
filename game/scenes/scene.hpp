@@ -3,11 +3,18 @@
 #include "../../services/keyboardservice/keyboardservice.hpp"
 
 #include <string>
+#include <optional>
 
 #ifndef ENTIY_H
 #define ENTIY_H
 #include "../entities/entity.hpp"
 #endif
+
+#ifndef PLAYER_H
+#define PLAYER_H
+#include "../entities/player/player.hpp"
+#endif
+
 
 class Scene {
 
@@ -20,7 +27,9 @@ class Scene {
 
         std::vector<std::string> screenBuffer = {};
 
-        std::vector<Entity> entities = {};
+        std::vector<Entity*> enemies = {};
+
+        std::optional<Player> player = {};
 
         int nextScene = 0;
 
