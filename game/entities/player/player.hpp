@@ -1,9 +1,11 @@
 #ifndef ENTIY_H
-
 #define ENTIY_H
-
 #include "../entity.hpp"
+#endif
 
+#ifndef KEYBOARD_CONTANTS_H
+#define KEYBOARD_CONTANTS_H
+#include "../../../helpers/keyboardconstants.hpp"
 #endif
 
 class Player: public Entity {
