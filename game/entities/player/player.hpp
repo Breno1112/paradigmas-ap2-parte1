@@ -11,5 +11,12 @@ class Player: public Entity {
     public:
         Player(int newId);
 
+        // este método não deve atualizar as variáveis de posição 
+        // ou aceleração do player. Só deve mudar a direção. 
+        // As atualizações de posição e direção deverão ser feitas no método update()
         void handleKeyPress(std::vector<int>* keysPressed) override;
+
+        void update() override;
+
+        void paint() override;
 };

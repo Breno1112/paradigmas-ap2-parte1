@@ -11,11 +11,26 @@ MainMenuScene::MainMenuScene()
 void MainMenuScene::update()
 {
     onKeyPress();
+    if(player.has_value()) {
+        player.value().update();
+    }
+    int count = 0;
+    while(count < enemies.size()) {
+        enemies[count]->update();
+        count = count + 1;
+    }
 }
 
 void MainMenuScene::paint()
 {
-    cout << "teste main menu scene pain" << endl;
+    if(player.has_value()) {
+        player.value().paint();
+    }
+    int count = 0;
+    while(count < enemies.size()) {
+        enemies[count]->paint();
+        count = count + 1;
+    }
 }
 
 void MainMenuScene::onKeyPress()

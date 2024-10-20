@@ -45,6 +45,14 @@ void Entity::handleKeyPress(std::vector<int> *keysPressed)
     
 }
 
+void Entity::update()
+{
+}
+
+void Entity::paint()
+{
+}
+
 Entity::Entity(int newId)
 {
     id = newId;
