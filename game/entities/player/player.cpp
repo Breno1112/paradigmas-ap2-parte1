@@ -65,19 +65,25 @@ void Player::update(std::vector<std::string> &screen)
     vector<bool> collisions = checkCollisions(screen);
     if(!collisions[0] && velY < 0) {
         y = y - 1;
-        velY = velY + 1;
     }
     if(!collisions[1] && velY > 0) {
         y = y + 1;
-        velY = velY - 1;
     }
     if(!collisions[2] && velX < 0) {
         x = x - 1;
-        velX = velX + 1;
     }
     if(!collisions[3] && velX > 0) {
         x = x + 1;
-        velX  = velX - 1;
+    }
+    if(velY > 0) {
+        velY = velY - 1;
+    } else if(velY < 0) {
+        velY = velY + 1;
+    }
+    if(velX > 0) {
+        velX = velX - 1;
+    } else if(velX < 0) {
+        velX = velX + 1;
     }
     if(!collisions[1] && velY == 0) { // aplicando gravidade no jogo
         y = y + 1;
@@ -136,7 +142,9 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
                 collidingTop = true;
             } else if(screen[y - 1][x] == block) {
                 collidingTop = true;
-            } else if(!collidingRight && screen[y - 1][x + 1] == block) {
+            } else if(!collidingRight && screen[y - 1][x + 2] == block) {
+                collidingTop = true;
+            } else if(!collidingLeft && screen[y - 1][x - 1] == block) {
                 collidingTop = true;
             }
         }
@@ -144,6 +152,10 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
             if(y >= screen.size() - 2) {
                 collidingBottom = true;
             } else if(screen[y + 2][x] == block) {
+                collidingBottom = true;
+            } else if(!collidingRight && screen[y + 2][x + 2] == block) {
+                collidingBottom = true;
+            } else if(!collidingLeft && screen[y + 2][x - 1] == block) {
                 collidingBottom = true;
             }
         }
