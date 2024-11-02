@@ -6,6 +6,7 @@ using namespace std;
 FirstLevelScene::FirstLevelScene()
 {
     player = make_optional<Player>(Player(1));
+    player.value().setY(17);
 }
 
 void FirstLevelScene::update()
