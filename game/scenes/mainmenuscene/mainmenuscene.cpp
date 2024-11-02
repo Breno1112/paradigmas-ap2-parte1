@@ -100,7 +100,9 @@ void MainMenuScene::onKeyPress()
 {
     std::vector<int> keysPressed = keyboardService.getKeysPressed({
         K_W_KEY,  
-        K_UP_ARROW_KEY, 
+        K_UP_ARROW_KEY,
+        K_DOWN_ARROW_KEY,
+        K_S_KEY,
         K_SPACE_KEY,
         });
     // cout << "Apertando " << keysPressed.size() << " teclas neste momento" << endl;
