@@ -47,7 +47,7 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
     }
 
     if(willGoUp) {
-        velY = -1;
+        velY = -4;
     } else if(willGoDown) {
         velY = 1;
     } else {
@@ -68,19 +68,19 @@ void Player::update(std::vector<std::string> &screen)
     cout << "player X " << x << "; player Y " << y << endl;
     vector<bool> collisions = checkCollisions(screen);
     if(!collisions[0] && velY < 0) {
-        y = y - 1;
+        y = y + velY;
         velY = velY + 1;
     }
     if(!collisions[1] && velY > 0) {
-        y = y + 1;
+        y = y + velY;
         velY = velY - 1;
     }
     if(!collisions[2] && velX < 0) {
-        x = x - 1;
+        x = x + velX;
         velX = velX + 1;
     }
     if(!collisions[3] && velX > 0) {
-        x = x + 1;
+        x = x + velX;
         velX  = velX - 1;
     }
     if(x < 0) {
