@@ -14,6 +14,7 @@ std::string LevelDeclaratorScene::updateScreenPlaceholders(std::string line)
 
 LevelDeclaratorScene::LevelDeclaratorScene(int nextLevelToPoint)
 {
+    sceneId = 1;
     nextLevel = nextLevelToPoint;
     startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
         std::chrono::system_clock::now().time_since_epoch()

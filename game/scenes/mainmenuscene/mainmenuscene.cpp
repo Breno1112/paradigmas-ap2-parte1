@@ -52,6 +52,7 @@ MainMenuScene::MainMenuScene()
     // criar cena com player
     // player = make_optional<Player>(Player(1));
     // criar cena sem player
+    sceneId = 0;
     player = nullopt;
 }
 

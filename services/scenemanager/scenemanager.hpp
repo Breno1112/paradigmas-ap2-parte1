@@ -14,5 +14,5 @@ class SceneManager {
     public:
         SceneManager() {};
 
-    std::shared_ptr<Scene> getScene(int id);
+    std::shared_ptr<Scene> getScene(int nextSceneId, int callerSceneId);
 };

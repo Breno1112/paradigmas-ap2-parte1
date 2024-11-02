@@ -31,7 +31,7 @@ void Game::update()
             stop();
             return;
         }
-        loadScene(sceneManager.getScene(scene->nextScene));
+        loadScene(sceneManager.getScene(scene->nextScene, scene->sceneId));
     }
 }
 
@@ -57,7 +57,7 @@ void Game::stop()
 
 Game::Game()
 {
-    scene = sceneManager.getScene(0);
+    scene = sceneManager.getScene(0, 0);
 }
 
 void Game::loadScene(std::shared_ptr<Scene> newScene)
