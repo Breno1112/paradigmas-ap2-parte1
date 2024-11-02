@@ -47,31 +47,135 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
     }
 
     if(willGoUp) {
-        velY = -1;
+        velY = -4;
     } else if(willGoDown) {
         velY = 1;
-    } else {
-        velY = 0;
     }
     
     if(willGoLeft) {
         velX = -1;
     } else if(willGoRight) {
         velX = 1;
-    } else {
-        velX = 0;
     }
 }
 
-void Player::update()
+void Player::update(std::vector<std::string> &screen)
 {
-    x = x + velX;
-    y = y + velY;
+    cout << "player X " << x << "; player Y " << y << endl;
+    vector<bool> collisions = checkCollisions(screen);
+    if(!collisions[0] && velY < 0) {
+        y = y - 1;
+    }
+    if(!collisions[1] && velY > 0) {
+        y = y + 1;
+    }
+    if(!collisions[2] && velX < 0) {
+        x = x - 1;
+    }
+    if(!collisions[3] && velX > 0) {
+        x = x + 1;
+    }
+    if(velY > 0) {
+        velY = velY - 1;
+    } else if(velY < 0) {
+        velY = velY + 1;
+    }
+    if(velX > 0) {
+        velX = velX - 1;
+    } else if(velX < 0) {
+        velX = velX + 1;
+    }
+    if(!collisions[1] && velY == 0) { // aplicando gravidade no jogo
+        y = y + 1;
+    }
+    if(x < 0) {
+        x = 0;
+    } else if(x > screen[x].size() - 1) {
+        x = screen[x].size() - 1;
+    }
+    if(y < 0) {
+        y = 0;
+    } else if(y > screen.size() - 2) {
+        y = screen.size() - 2;
+    }
 
-    cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
+    // cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
 }
 
 // Apenas atualizar o screen buffer. Quem fará o print são as cenas
-void Player::paint(std::vector<std::string> screen)
+void Player::paint(std::vector<std::string> &screen)
 {
+    // cout << "player paint";
+    // screen[0] = "oi";
+    int count = 0;
+    while(count < screen.size()) {
+        std::string line = screen[count];
+        int pos = line.find("[]");
+        if(pos != std::string::npos) {
+            screen[count] = line.replace(pos, 2, "..");
+        }
+        count = count + 1;
+    }
+    std::string firstLine = screen[y];
+    std::string secondLine = screen[y + 1];
+    firstLine.replace(firstLine.begin() + x, firstLine.begin() + x + 2, "[]");
+    secondLine.replace(secondLine.begin() + x, secondLine.begin() + x + 2, "[]");
+    screen[y] = firstLine;
+    screen[y + 1] = secondLine;
+    
+}
+
+std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
+{
+    // return {true, true, false, false};
+    bool collidingTop = false;
+    bool collidingBottom = false;
+    bool collidingLeft = false;
+    bool collidingRight = false;
+
+    int count = 0;
+    while(count < collisionBlocks.size()) {
+        char block = collisionBlocks[count][0]; // [0] é para transformar em char
+        // cout << "validando colisão contra o bloco " << block << endl;
+        if(!collidingTop) { // se ainda não tiver colidido com um bloco anterior
+            if(y <= 0) {
+                collidingTop = true;
+            } else if(screen[y - 1][x] == block) {
+                collidingTop = true;
+            } else if(!collidingRight && screen[y - 1][x + 2] == block) {
+                collidingTop = true;
+            } else if(!collidingLeft && screen[y - 1][x - 1] == block) {
+                collidingTop = true;
+            }
+        }
+        if(!collidingBottom) { // se ainda não tiver colidido com um bloco anterior
+            if(y >= screen.size() - 2) {
+                collidingBottom = true;
+            } else if(screen[y + 2][x] == block) {
+                collidingBottom = true;
+            } else if(!collidingRight && screen[y + 2][x + 2] == block) {
+                collidingBottom = true;
+            } else if(!collidingLeft && screen[y + 2][x - 1] == block) {
+                collidingBottom = true;
+            }
+        }
+        if(!collidingLeft) { // se ainda não tiver colidido com um bloco anterior
+            if(x <= 0) {
+                collidingLeft = true;
+            } else if(screen[y][x - 1] == block || screen[y + 1][x - 1] == block) {
+                collidingLeft = true;   
+            }
+        }
+        if(!collidingRight) { // se ainda não tiver colidido com um bloco anterior
+            if(x >= screen[0].size() - 2) {
+                collidingRight = true;
+            } else if((screen[y][x + 2] == block || screen[y + 1][x + 2] == block)) {
+                collidingRight = true;
+            }
+        }
+        count = count + 1;
+    }
+
+    cout << "colliding top " << collidingTop << "; colliding bottom " << collidingBottom << "; colliding left " << collidingLeft << " colliding right " << collidingRight << endl;
+    return {collidingTop, collidingBottom, collidingLeft, collidingRight};
 }

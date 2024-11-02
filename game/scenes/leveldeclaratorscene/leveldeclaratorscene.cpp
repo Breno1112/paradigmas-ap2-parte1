@@ -1,5 +1,4 @@
 #include "leveldeclaratorscene.hpp"
-#include <iostream>
 
 using namespace std;
 

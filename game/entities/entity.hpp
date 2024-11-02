@@ -25,9 +25,9 @@ class Entity {
 
         virtual void handleKeyPress(std::vector<int>* keysPressed);
 
-        virtual void update();
+        virtual void update(std::vector<std::string> &screen);
 
-        virtual void paint(std::vector<std::string> screen);
+        virtual void paint(std::vector<std::string> &screen);
 
         Entity(int id);
 };
