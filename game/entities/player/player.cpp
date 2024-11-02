@@ -71,6 +71,7 @@ void Player::update()
     cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
 }
 
+// Apenas atualizar o screen buffer. Quem fará o print são as cenas
 void Player::paint(std::vector<std::string> screen)
 {
 }
