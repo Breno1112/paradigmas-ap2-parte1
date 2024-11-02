@@ -14,7 +14,7 @@ class MainMenuScene: public Scene {
 
     private:
 
-        int selectedMenuOption = 0;
+        int selectedMenuOption = 1;
 
         std::vector<std::string> screenBuffer = {
             "..................................................",
@@ -39,7 +39,9 @@ class MainMenuScene: public Scene {
             ".................................................."
         };
 
-        void updateScreenPlaceholders();
+        std::string updateScreenPlaceholders(std::string line);
+
+        void changeSelectedMenuOption(std::vector<int> keysPressed);
 
     public:
         MainMenuScene();
