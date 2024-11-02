@@ -16,10 +16,9 @@
 
 class Scene {
 
-    private:
-        void finish(int nextScene);
-
     public:
+
+        void finish(int nextScene);
 
         KeyboardService keyboardService;
 

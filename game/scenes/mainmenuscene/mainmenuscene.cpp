@@ -26,6 +26,7 @@ void MainMenuScene::changeSelectedMenuOption(std::vector<int> keysPressed)
     int count = 0;
     bool pressedUp = false;
     bool pressedDown = false;
+    bool pressedSpace = false;
     while(count < keysPressed.size()) {
         if(keysPressed.at(count) == K_UP_ARROW_KEY || keysPressed.at(count) == K_W_KEY) {
             pressedUp = true;
@@ -33,10 +34,16 @@ void MainMenuScene::changeSelectedMenuOption(std::vector<int> keysPressed)
         if(keysPressed.at(count) == K_DOWN_ARROW_KEY || keysPressed.at(count) == K_S_KEY) {
             pressedDown = true;
         }
+        if(keysPressed.at(count) == K_SPACE_KEY) {
+            pressedSpace = true;
+        }
         count = count + 1;
     }
     if((pressedUp && !pressedDown) || (pressedDown && !pressedUp)) {
         selectedMenuOption = 1 - selectedMenuOption;
+    }
+    if(pressedSpace) {
+        optionConfirmed = true;
     }
 }
 
@@ -51,6 +58,13 @@ MainMenuScene::MainMenuScene()
 void MainMenuScene::update()
 {
     onKeyPress();
+    if(optionConfirmed) {
+        if(selectedMenuOption == 1) {
+            finish(-1);
+        } else {
+            finish(2);
+        }
+    }
     // if(player.has_value()) {
     //     player.value().update();
     // }
@@ -94,6 +108,5 @@ void MainMenuScene::onKeyPress()
     // if(player.has_value()) {
     //     player.value().handleKeyPress(&keysPressed);
     // }
-
     changeSelectedMenuOption(keysPressed);
 }

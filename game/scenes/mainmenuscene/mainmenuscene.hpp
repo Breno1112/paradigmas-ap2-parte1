@@ -14,6 +14,8 @@ class MainMenuScene: public Scene {
 
     private:
 
+        bool optionConfirmed = false;
+
         int selectedMenuOption = 1;
 
         std::vector<std::string> screenBuffer = {
