@@ -33,7 +33,6 @@ void LevelDeclaratorScene::update()
     auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(lastTime - startTime).count();
     if(delta >= waitTimeMs) {
         finish(nextLevel);
-        cout << "level declarator scene finish";
     }
 }
 
