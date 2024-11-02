@@ -58,6 +58,6 @@ void FirstLevelScene::checkPlayerWon()
 {
     Player p = player.value();
     if(p.x >= finishZoneStartX && p.x <= finishZoneEndX && p.y >= finishZoneStartY && p.y <= finishZoneEndY) {
-        finish(-1);
+        finish(2);
     }
 }

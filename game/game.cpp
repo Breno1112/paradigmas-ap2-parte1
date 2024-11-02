@@ -52,7 +52,7 @@ void Game::start()
 void Game::stop()
 {
     gameRunning = false;
-    cout << "Finalizando jogo" << endl;
+    cout << "Fim do jogo" << endl;
 }
 
 Game::Game()
