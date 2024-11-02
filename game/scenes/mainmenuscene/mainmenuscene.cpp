@@ -24,11 +24,11 @@ void MainMenuScene::update()
 void MainMenuScene::paint()
 {
     if(player.has_value()) {
-        player.value().paint();
+        player.value().paint({});
     }
     int count = 0;
     while(count < enemies.size()) {
-        enemies[count]->paint();
+        enemies[count]->paint({});
         count = count + 1;
     }
 

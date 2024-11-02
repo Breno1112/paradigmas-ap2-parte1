@@ -20,5 +20,5 @@ class Player: public Entity {
 
         void update() override;
 
-        void paint() override;
+        void paint(std::vector<std::string> screen) override;
 };

@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <string>
 class Entity {
 
     public:
@@ -27,7 +27,7 @@ class Entity {
 
         virtual void update();
 
-        virtual void paint();
+        virtual void paint(std::vector<std::string> screen);
 
         Entity(int id);
 };

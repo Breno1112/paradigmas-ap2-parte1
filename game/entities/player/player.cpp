@@ -71,6 +71,6 @@ void Player::update()
     cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
 }
 
-void Player::paint()
+void Player::paint(std::vector<std::string> screen)
 {
 }
