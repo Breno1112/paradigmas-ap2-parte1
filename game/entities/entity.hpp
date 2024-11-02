@@ -27,7 +27,7 @@ class Entity {
 
         virtual void update();
 
-        virtual void paint(std::vector<std::string> screen);
+        virtual void paint(std::vector<std::string> &screen);
 
         Entity(int id);
 };

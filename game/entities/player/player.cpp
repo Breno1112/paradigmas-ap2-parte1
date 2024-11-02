@@ -67,11 +67,39 @@ void Player::update()
 {
     x = x + velX;
     y = y + velY;
+    if(x < 0) {
+        x = 0;
+    } else if(x > 48) {
+        x = 48;
+    }
+    if(y < 0) {
+        y = 0;
+    } else if(y > 18) {
+        y = 18;
+    }
 
-    cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
+    // cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
 }
 
 // Apenas atualizar o screen buffer. Quem fará o print são as cenas
-void Player::paint(std::vector<std::string> screen)
+void Player::paint(std::vector<std::string> &screen)
 {
+    // cout << "player paint";
+    // screen[0] = "oi";
+    int count = 0;
+    while(count < screen.size()) {
+        std::string line = screen[count];
+        int pos = line.find("[]");
+        if(pos != std::string::npos) {
+            screen[count] = line.replace(pos, 2, "..");
+        }
+        count = count + 1;
+    }
+    std::string firstLine = screen[y];
+    std::string secondLine = screen[y + 1];
+    firstLine.replace(firstLine.begin() + x, firstLine.begin() + x + 2, "[]");
+    secondLine.replace(secondLine.begin() + x, secondLine.begin() + x + 2, "[]");
+    screen[y] = firstLine;
+    screen[y + 1] = secondLine;
+    
 }

@@ -49,7 +49,7 @@ void Entity::update()
 {
 }
 
-void Entity::paint(std::vector<std::string> screen)
+void Entity::paint(std::vector<std::string> &screen)
 {
 }
 
