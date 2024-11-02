@@ -61,7 +61,7 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
 
 void Player::update(std::vector<std::string> &screen)
 {
-    cout << "player X " << x << "; player Y " << y << endl;
+    // cout << "player X " << x << "; player Y " << y << endl;
     vector<bool> collisions = checkCollisions(screen);
     if(!collisions[0] && velY < 0) {
         y = y - 1;
@@ -176,6 +176,6 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
         count = count + 1;
     }
 
-    cout << "colliding top " << collidingTop << "; colliding bottom " << collidingBottom << "; colliding left " << collidingLeft << " colliding right " << collidingRight << endl;
+    // cout << "colliding top " << collidingTop << "; colliding bottom " << collidingBottom << "; colliding left " << collidingLeft << " colliding right " << collidingRight << endl;
     return {collidingTop, collidingBottom, collidingLeft, collidingRight};
 }
