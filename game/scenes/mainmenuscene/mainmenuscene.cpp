@@ -3,6 +3,31 @@
 
 using namespace std;
 
+void MainMenuScene::updateScreenPlaceholders()
+{
+    int count = 0;
+    int placeholderStartPosition = 0;
+    int placeholderEndPosition = 0;
+    bool foundInLine = false;
+    while(count < screenBuffer.size()) {
+        std::string line = screenBuffer[count];
+        placeholderStartPosition = line.find("{");
+        if(placeholderStartPosition == -1) {
+            foundInLine = false;
+        } else {
+            foundInLine = true;
+            placeholderEndPosition = placeholderStartPosition + 2;
+            char placeholderStrValue = line[placeholderStartPosition + 1];
+            int placeholderValue = placeholderStrValue - '0';
+            if(placeholderValue == selectedMenuOption) {
+                screenBuffer[count] = line.replace(placeholderStartPosition , 3, "-->");
+            }
+
+        }
+        count = count + 1;
+    }
+}
+
 MainMenuScene::MainMenuScene()
 {
     player = make_optional<Player>(Player(1));
@@ -19,6 +44,7 @@ void MainMenuScene::update()
         enemies[count]->update();
         count = count + 1;
     }
+    updateScreenPlaceholders();
 }
 
 void MainMenuScene::paint()
