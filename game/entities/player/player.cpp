@@ -137,6 +137,8 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
                 collidingTop = true;
             } else if(screen[y - 1][x] == block) {
                 collidingTop = true;
+            } else if(!collidingRight && screen[y - 1][x + 1] == block) {
+                collidingTop = true;
             }
         }
         if(!collidingBottom) { // se ainda não tiver colidido com um bloco anterior

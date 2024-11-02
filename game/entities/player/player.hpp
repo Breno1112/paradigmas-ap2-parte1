@@ -25,7 +25,7 @@ class Player: public Entity {
     
     private:
 
-        std::vector<std::string> collisionBlocks = {"="};
+        std::vector<std::string> collisionBlocks = {"=", "+"};
 
         std::vector<bool> checkCollisions(std::vector<std::string> &screen);
 };
