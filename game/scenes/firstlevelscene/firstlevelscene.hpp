@@ -30,6 +30,8 @@ class FirstLevelScene: public Scene {
             "=================================================="
         };
 
+        void onKeyPress();
+
     public:
         FirstLevelScene();
 
