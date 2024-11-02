@@ -21,6 +21,8 @@ void MainMenuScene::updateScreenPlaceholders()
             int placeholderValue = placeholderStrValue - '0';
             if(placeholderValue == selectedMenuOption) {
                 screenBuffer[count] = line.replace(placeholderStartPosition , 3, "-->");
+            } else {
+                screenBuffer[count] = line.replace(placeholderStartPosition , 3, "...");
             }
 
         }
