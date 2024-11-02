@@ -3,28 +3,14 @@
 #include "../scene.hpp"
 #endif
 
-#ifndef KEYBOARD_CONTANTS_H
-#define KEYBOARD_CONTANTS_H
-#include "../../helpers/keyboardconstants.hpp"
-#endif
+class FirstLevelScene: public Scene {
 
-#include <string>
-
-class MainMenuScene: public Scene {
 
     private:
-
-        bool optionConfirmed = false;
-
-        int selectedMenuOption = 0;
-
         std::vector<std::string> screenBuffer = {
             "..................................................",
             "..................................................",
             "..................................................",
-            "...............{0}...NOVO JOGO....................",
-            "..................................................",
-            "...............{1}.....SAIR.......................",
             "..................................................",
             "..................................................",
             "..................................................",
@@ -38,20 +24,17 @@ class MainMenuScene: public Scene {
             "..................................................",
             "..................................................",
             "..................................................",
-            ".................................................."
+            "..................................................",
+            "..................................................",
+            "..................................................",
+            "=================================================="
         };
 
-        std::string updateScreenPlaceholders(std::string line);
-
-        void changeSelectedMenuOption(std::vector<int> keysPressed);
-
     public:
-        MainMenuScene();
+        FirstLevelScene();
 
         void update() override;
 
         void paint() override;
 
-        void onKeyPress() override;
-        
 };

@@ -3,28 +3,21 @@
 #include "../scene.hpp"
 #endif
 
-#ifndef KEYBOARD_CONTANTS_H
-#define KEYBOARD_CONTANTS_H
-#include "../../helpers/keyboardconstants.hpp"
-#endif
+#include <chrono>
 
-#include <string>
-
-class MainMenuScene: public Scene {
-
+class LevelDeclaratorScene: public Scene {
     private:
-
-        bool optionConfirmed = false;
-
-        int selectedMenuOption = 0;
-
+        int nextLevel = -1;
+        int waitTimeMs = 3000;
+        std::chrono::milliseconds startTime;
+        std::chrono::milliseconds lastTime;
         std::vector<std::string> screenBuffer = {
             "..................................................",
             "..................................................",
             "..................................................",
-            "...............{0}...NOVO JOGO....................",
             "..................................................",
-            "...............{1}.....SAIR.......................",
+            "..................................................",
+            "......................FASE $......................",
             "..................................................",
             "..................................................",
             "..................................................",
@@ -40,18 +33,11 @@ class MainMenuScene: public Scene {
             "..................................................",
             ".................................................."
         };
-
         std::string updateScreenPlaceholders(std::string line);
-
-        void changeSelectedMenuOption(std::vector<int> keysPressed);
-
     public:
-        MainMenuScene();
+        LevelDeclaratorScene(int nextLevelToPoint);
 
         void update() override;
 
         void paint() override;
-
-        void onKeyPress() override;
-        
 };

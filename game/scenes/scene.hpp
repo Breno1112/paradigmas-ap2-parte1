@@ -28,6 +28,8 @@ class Scene {
 
         int nextScene = 0;
 
+        int sceneId = 0;
+
         bool finished = false;
 
         virtual void onKeyPress();

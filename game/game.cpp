@@ -29,14 +29,17 @@ void Game::update()
     if(scene->finished) {
         if(scene->nextScene == -1) {
             stop();
+            return;
         }
-        loadScene(sceneManager.getScene(scene->nextScene));
+        loadScene(sceneManager.getScene(scene->nextScene, scene->sceneId));
     }
 }
 
 void Game::paint()
 {
-    scene->paint();
+    if(gameRunning) {
+        scene->paint();
+    }
 }
 
 void Game::start()
@@ -54,7 +57,7 @@ void Game::stop()
 
 Game::Game()
 {
-    scene = sceneManager.getScene(1);
+    scene = sceneManager.getScene(0, 0);
 }
 
 void Game::loadScene(std::shared_ptr<Scene> newScene)

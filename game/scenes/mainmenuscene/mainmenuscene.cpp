@@ -52,6 +52,7 @@ MainMenuScene::MainMenuScene()
     // criar cena com player
     // player = make_optional<Player>(Player(1));
     // criar cena sem player
+    sceneId = 0;
     player = nullopt;
 }
 
@@ -62,7 +63,7 @@ void MainMenuScene::update()
         if(selectedMenuOption == 1) {
             finish(-1);
         } else {
-            finish(2);
+            finish(1);
         }
     }
     // if(player.has_value()) {
@@ -100,7 +101,9 @@ void MainMenuScene::onKeyPress()
 {
     std::vector<int> keysPressed = keyboardService.getKeysPressed({
         K_W_KEY,  
-        K_UP_ARROW_KEY, 
+        K_UP_ARROW_KEY,
+        K_DOWN_ARROW_KEY,
+        K_S_KEY,
         K_SPACE_KEY,
         });
     // cout << "Apertando " << keysPressed.size() << " teclas neste momento" << endl;
