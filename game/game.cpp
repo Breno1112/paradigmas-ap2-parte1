@@ -22,24 +22,21 @@ void Game::startInternalGameThread()
     }
 }
 
+
 void Game::update()
 {
-    
+    scene->update();
+    if(scene->finished) {
+        if(scene->nextScene == -1) {
+            stop();
+        }
+        loadScene(sceneManager.getScene(scene->nextScene));
+    }
 }
 
 void Game::paint()
 {
-    int h = 0;
-    while(h < MAX_HEIGHT) {
-        int w = 0;
-        while(w < MAX_WIDTH) {
-            cout << ".";
-            w = w + 1;
-        }
-        cout << endl;
-        h = h + 1;
-    }
-    cout << "\x1B[5;47;31mTick\033[0m\t\t" << endl;
+    scene->paint();
 }
 
 void Game::start()
@@ -53,4 +50,14 @@ void Game::stop()
 {
     gameRunning = false;
     cout << "Finalizando jogo" << endl;
+}
+
+Game::Game()
+{
+    scene = sceneManager.getScene(1);
+}
+
+void Game::loadScene(std::shared_ptr<Scene> newScene)
+{
+    scene = newScene;
 }

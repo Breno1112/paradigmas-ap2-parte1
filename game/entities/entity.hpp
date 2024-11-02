@@ -1,10 +1,9 @@
+#include <vector>
+#include <string>
 class Entity {
 
-
-    private:
-        int x, y, velX, velY = 0;
-
     public:
+        int x, y, velX, velY = 0;
 
         int id;
         
@@ -23,6 +22,12 @@ class Entity {
         int getVelX();
 
         int getVelY();
+
+        virtual void handleKeyPress(std::vector<int>* keysPressed);
+
+        virtual void update();
+
+        virtual void paint(std::vector<std::string> screen);
 
         Entity(int id);
 };
