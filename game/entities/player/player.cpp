@@ -63,19 +63,34 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
     }
 }
 
-void Player::update()
+void Player::update(std::vector<std::string> &screen)
 {
-    x = x + velX;
-    y = y + velY;
+    vector<bool> collisions = checkCollisions(screen);
+    if(!collisions[0] && velY < 0) {
+        y = y - 1;
+        velY = velY + 1;
+    }
+    if(!collisions[1] && velY > 0) {
+        y = y + 1;
+        velY = velY - 1;
+    }
+    if(!collisions[2] && velX < 0) {
+        x = x - 1;
+        velX = velX + 1;
+    }
+    if(!collisions[3] && velX > 0) {
+        x = x + 1;
+        velX  = velX - 1;
+    }
     if(x < 0) {
         x = 0;
-    } else if(x > 48) {
-        x = 48;
+    } else if(x > screen[x].size() - 1) {
+        x = screen[x].size() - 1;
     }
     if(y < 0) {
         y = 0;
-    } else if(y > 18) {
-        y = 18;
+    } else if(y > screen.size() - 2) {
+        y = screen.size() - 2;
     }
 
     // cout << "Player coordinates are: X = " << x << ";  Y = " << y << endl;
@@ -102,4 +117,43 @@ void Player::paint(std::vector<std::string> &screen)
     screen[y] = firstLine;
     screen[y + 1] = secondLine;
     
+}
+
+std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
+{
+    bool collidingTop = false;
+    bool collidingBottom = false;
+    bool collidingLeft = false;
+    bool collidingRight = false;
+
+    int count = 0;
+    while(count < collisionBlocks.size()) {
+        char block = collisionBlocks[count][0]; // [0] é para transformar em char
+        if(!collidingTop) { // se ainda não tiver colidido com um bloco anterior
+            if(y <= 0) {
+                collidingTop = true;
+            } else if(y > 0 && screen[y - 1][x] == block) {
+                collidingTop = true;
+            }
+        }
+        if(!collidingBottom) { // se ainda não tiver colidido com um bloco anterior
+            if(y >= screen.size() - 2) {
+                collidingBottom = true;
+            } else if(y < screen.size() - 2 && screen[y + 1][x] == block) {
+                collidingBottom = true;
+            }
+        }
+        if(!collidingLeft) { // se ainda não tiver colidido com um bloco anterior
+            if(x > 0 && (screen[y][x - 1] == block || screen[y - 1][x - 1] == block)) {
+                collidingLeft = true;   
+            }
+        }
+        if(!collidingRight) { // se ainda não tiver colidido com um bloco anterior
+            if(x < screen[0].size() - 2 && (screen[y][x + 1] == block || screen[y - 1][x + 1] == block)) {
+                collidingRight = true;
+            }
+        }
+        count = count + 1;
+    }
+    return {collidingTop, collidingBottom, collidingLeft, collidingRight};
 }

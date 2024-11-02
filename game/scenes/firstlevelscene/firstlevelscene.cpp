@@ -13,7 +13,7 @@ void FirstLevelScene::update()
 {
     onKeyPress();
     if(player.has_value()) {
-        player.value().update();
+        player.value().update(screenBuffer);
     }
 }
 

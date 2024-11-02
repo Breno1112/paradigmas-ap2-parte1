@@ -10,6 +10,7 @@
 
 class Player: public Entity {
 
+
     public:
         Player(int newId);
 
@@ -18,7 +19,13 @@ class Player: public Entity {
         // As atualizações de posição e direção deverão ser feitas no método update()
         void handleKeyPress(std::vector<int>* keysPressed) override;
 
-        void update() override;
+        void update(std::vector<std::string> &screen) override;
 
         void paint(std::vector<std::string> &screen) override;
+    
+    private:
+
+        std::vector<std::string> collisionBlocks = {"="};
+
+        std::vector<bool> checkCollisions(std::vector<std::string> &screen);
 };

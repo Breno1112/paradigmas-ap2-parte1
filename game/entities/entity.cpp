@@ -45,7 +45,7 @@ void Entity::handleKeyPress(std::vector<int> *keysPressed)
     
 }
 
-void Entity::update()
+void Entity::update(std::vector<std::string> &screen)
 {
 }
 
