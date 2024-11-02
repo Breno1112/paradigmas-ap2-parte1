@@ -66,7 +66,6 @@ void Player::handleKeyPress(std::vector<int> *keysPressed)
 void Player::update(std::vector<std::string> &screen)
 {
     cout << "player X " << x << "; player Y " << y << endl;
-    collidingTop(screen);
     vector<bool> collisions = checkCollisions(screen);
     if(!collisions[0] && velY < 0) {
         y = y - 1;
@@ -129,12 +128,10 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
     bool collidingLeft = false;
     bool collidingRight = false;
 
-    cout << "aqui 1" << endl;
-
     int count = 0;
     while(count < collisionBlocks.size()) {
         char block = collisionBlocks[count][0]; // [0] é para transformar em char
-        cout << "validando colisão contra o bloco " << block << endl;
+        // cout << "validando colisão contra o bloco " << block << endl;
         if(!collidingTop) { // se ainda não tiver colidido com um bloco anterior
             if(y <= 0) {
                 collidingTop = true;
@@ -142,7 +139,6 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
                 collidingTop = true;
             }
         }
-        cout << "aqui2" << endl;
         if(!collidingBottom) { // se ainda não tiver colidido com um bloco anterior
             if(y >= screen.size() - 2) {
                 collidingBottom = true;
@@ -158,10 +154,9 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
             }
         }
         if(!collidingRight) { // se ainda não tiver colidido com um bloco anterior
-            if(x >= screen[0].size() - 1) {
+            if(x >= screen[0].size() - 2) {
                 collidingRight = true;
-            }
-            if(x < screen[0].size() - 1 && (screen[y][x + 2] == block || screen[y + 1][x + 2] == block)) {
+            } else if((screen[y][x + 2] == block || screen[y + 1][x + 2] == block)) {
                 collidingRight = true;
             }
         }
@@ -170,22 +165,4 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
 
     cout << "colliding top " << collidingTop << "; colliding bottom " << collidingBottom << "; colliding left " << collidingLeft << " colliding right " << collidingRight << endl;
     return {collidingTop, collidingBottom, collidingLeft, collidingRight};
-}
-
-bool Player::collidingTop(std::vector<std::string> &screen)
-{
-    bool colliding = false;
-    if(y <= 0) {
-        colliding = true;
-    }
-    int count = 0;
-    while(!colliding && count < collisionBlocks.size()) {
-        char blockAbove = screen[y - 1][x];
-        if(blockAbove == collisionBlocks[count].at(0)) {
-            colliding = true;
-        }
-        count = count + 1;
-    }
-    cout << "colliding top separate method: " << colliding << endl;
-    return colliding;
 }
