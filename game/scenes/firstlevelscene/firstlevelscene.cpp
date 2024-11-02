@@ -7,6 +7,7 @@ FirstLevelScene::FirstLevelScene()
 {
     player = make_optional<Player>(Player(1));
     player.value().setY(17);
+    // player.value().setX(40);
 }
 
 void FirstLevelScene::update()
