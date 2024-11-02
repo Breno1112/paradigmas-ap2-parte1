@@ -135,14 +135,14 @@ std::vector<bool> Player::checkCollisions(std::vector<std::string> &screen)
         if(!collidingTop) { // se ainda não tiver colidido com um bloco anterior
             if(y <= 0) {
                 collidingTop = true;
-            } else if(y > 0 && screen[y - 1][x] == block) {
+            } else if(screen[y - 1][x] == block) {
                 collidingTop = true;
             }
         }
         if(!collidingBottom) { // se ainda não tiver colidido com um bloco anterior
             if(y >= screen.size() - 2) {
                 collidingBottom = true;
-            } else if(y < screen.size() - 2 && screen[y + 2][x] == block) {
+            } else if(screen[y + 2][x] == block) {
                 collidingBottom = true;
             }
         }
