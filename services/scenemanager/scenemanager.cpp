@@ -20,7 +20,7 @@ std::shared_ptr<Scene> SceneManager::getScene(int nextSceneId, int callerSceneId
         s.finished = false;
         runningScene = make_shared<MainMenuScene>(s);
     } else if(callerSceneId == 1) {
-        if(nextSceneId == 2) {
+        if(nextSceneId == 1) {
             FirstLevelScene s = FirstLevelScene();
             s.finished = false;
             runningScene = make_shared<FirstLevelScene>(s);

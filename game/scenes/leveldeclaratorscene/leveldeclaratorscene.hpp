@@ -8,7 +8,7 @@
 class LevelDeclaratorScene: public Scene {
     private:
         int nextLevel = -1;
-        int waitTimeMs = 10000;
+        int waitTimeMs = 3000;
         std::chrono::milliseconds startTime;
         std::chrono::milliseconds lastTime;
         std::vector<std::string> screenBuffer = {
