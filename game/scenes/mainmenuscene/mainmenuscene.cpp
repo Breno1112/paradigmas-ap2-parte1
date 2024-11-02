@@ -62,7 +62,7 @@ void MainMenuScene::update()
         if(selectedMenuOption == 1) {
             finish(-1);
         } else {
-            finish(2);
+            finish(1);
         }
     }
     // if(player.has_value()) {
