@@ -28,7 +28,7 @@ void Game::update()
     scene->update();
     if(scene->finished) {
         if(scene->nextScene == -1) {
-            gameRunning = false;
+            stop();
         }
         loadScene(sceneManager.getScene(scene->nextScene));
     }
