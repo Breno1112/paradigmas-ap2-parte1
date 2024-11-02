@@ -18,6 +18,14 @@ class Scene {
 
     public:
 
+        int finishZoneStartX = 1000;
+
+        int finishZoneEndX = 1000;
+
+        int finishZoneStartY = 1000;
+
+        int finishZoneEndY = 1000;
+
         void finish(int nextScene);
 
         KeyboardService keyboardService;

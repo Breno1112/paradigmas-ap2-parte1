@@ -39,4 +39,6 @@ class FirstLevelScene: public Scene {
 
         void paint() override;
 
+        void checkPlayerWon();
+
 };
