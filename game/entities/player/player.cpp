@@ -79,6 +79,9 @@ void Player::update(std::vector<std::string> &screen)
         x = x + 1;
         velX  = velX - 1;
     }
+    if(!collisions[1] && velY == 0) { // aplicando gravidade no jogo
+        y = y + 1;
+    }
     if(x < 0) {
         x = 0;
     } else if(x > screen[x].size() - 1) {
