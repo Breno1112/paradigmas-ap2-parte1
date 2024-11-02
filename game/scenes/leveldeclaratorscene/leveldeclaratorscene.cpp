@@ -15,10 +15,25 @@ std::string LevelDeclaratorScene::updateScreenPlaceholders(std::string line)
 LevelDeclaratorScene::LevelDeclaratorScene(int nextLevelToPoint)
 {
     nextLevel = nextLevelToPoint;
+    startTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    );
+    lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    );
 }
 
 void LevelDeclaratorScene::update()
 {
+    lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(
+        std::chrono::system_clock::now().time_since_epoch()
+    );
+
+    auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(lastTime - startTime).count();
+    if(delta >= waitTimeMs) {
+        finish(nextLevel);
+    }
+    cout << "level declarator scene finish";
 }
 
 void LevelDeclaratorScene::paint()
